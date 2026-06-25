@@ -26,3 +26,4 @@ vim.opt.verbosefile = "/data/data/com.termux/files/home/nvim.log"
 --    vim.b.autoformat = false
 --  end,
 --})
+
