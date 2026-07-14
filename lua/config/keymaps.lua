@@ -23,9 +23,9 @@ map("v", "<leader>c", "y", { desc = "Copy selection" })
 map("v", "<leader>v", "p", { desc = "Paste selection" })
 
 map("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false,
-  desc = "Accept Copilot suggestion",
+	expr = true,
+	replace_keycodes = false,
+	desc = "Accept Copilot suggestion",
 })
 -- map("i", "<leader>l", "<Cmd>call copilot#Next()<CR>", { desc = "Next Copilot suggestion" })
 -- map("i", "<leader>h", "<Cmd>call copilot#Previous()<CR>", { desc = "Previous Copilot suggestion" })

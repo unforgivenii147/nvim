@@ -1,0 +1,32 @@
+return {
+  {
+    "folke/lazy.nvim",
+    opts = {
+      install = {
+        -- Shallow clone all plugins
+        clone = "git clone --depth 1 --filter=blob:none {{url}} {{path}} 2>/dev/null || git clone --depth 1 {{url}} {{path}} 2>/dev/null || git clone {{url}} {{path}}",
+        -- Keep only the necessary commit
+        checkout = "git checkout {{commit}} 2>/dev/null || git checkout {{branch}} 2>/dev/null"
+      },
+      performance = {
+        -- Cache plugin resolution for faster startup
+        cache = {
+          enabled = true,
+        },
+        -- Don't load unused plugins
+        rtp = {
+          disabled_plugins = {
+            "gzip",
+            "matchit",
+            "matchparen",
+            "netrwPlugin",
+            "tarPlugin",
+            "tohtml",
+            "tutor",
+            "zipPlugin",
+          },
+        },
+      },
+    }
+  }
+}
