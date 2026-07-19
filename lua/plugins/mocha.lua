@@ -1,20 +1,17 @@
 return {
-  {
-    "catppuccin/nvim",7
-    name = "catppuccin",
-    priority = 1000,
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-    
-    config = function()
-      vim.cmd.colorscheme("catppuccin-mocha")
-    end,
-  },
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+		},
+		config = function()
+			vim.cmd.colorscheme("catppuccin-mocha")
+		end,
+	},
 }
-
-

@@ -12,9 +12,6 @@ vim.opt.autoread = true
 vim.opt.backup = false
 vim.opt.breakindent = true
 vim.opt.cmdheight = 2
-vim.opt.colorcolumn = { 80, 100, 120 }
-vim.opt.completeopt:append("noselect")
-vim.opt.confirm = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = { "line" }
 vim.opt.encoding = "UTF-8"

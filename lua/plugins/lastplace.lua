@@ -1,6 +1,6 @@
 return {
-  {
-    "ethanholz/nvim-lastplace",
-    config = true,
-  },
+	{
+		"ethanholz/nvim-lastplace",
+		config = true,
+	},
 }
