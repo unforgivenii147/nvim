@@ -1,10 +1,17 @@
 return {
-	{
-		"mason-org/mason.nvim",
-		opts = {
-			ensure_installed = {
-				"pyright",
-			},
-		},
-	},
+  {
+    "mason-org/mason.nvim",
+    config = function()
+      require("mason").setup({
+        ui = {
+          border = "rounded",
+        },
+      })
+    end,
+    opts = {
+      ensure_installed = {
+        "pyright",
+      },
+    },
+  },
 }

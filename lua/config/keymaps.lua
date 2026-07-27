@@ -23,9 +23,16 @@ map("v", "<leader>c", "y", { desc = "Copy selection" })
 map("v", "<leader>v", "p", { desc = "Paste selection" })
 
 map("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
-	expr = true,
-	replace_keycodes = false,
-	desc = "Accept Copilot suggestion",
+  expr = true,
+  replace_keycodes = false,
+  desc = "Accept Copilot suggestion",
 })
--- map("i", "<leader>l", "<Cmd>call copilot#Next()<CR>", { desc = "Next Copilot suggestion" })
--- map("i", "<leader>h", "<Cmd>call copilot#Previous()<CR>", { desc = "Previous Copilot suggestion" })
+map("i", "<leader>l", "<Cmd>call copilot#Next()<CR>", { desc = "Next Copilot suggestion" })
+map("i", "<leader>h", "<Cmd>call copilot#Previous()<CR>", { desc = "Previous Copilot suggestion" })
+
+local dap = require("dap")
+vim.keymap.set("n", "<F5>", dap.continue)
+vim.keymap.set("n", "<F10>", dap.step_over)
+vim.keymap.set("n", "<F11>", dap.step_into)
+vim.keymap.set("n", "<F12>", dap.step_out)
+vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint)

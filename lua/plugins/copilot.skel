@@ -1,5 +1,7 @@
--- plugins/copilot.lua
-return { {
-  "zbirenbaum/copilot.lua",
-  opts = {},
-}, require("copilot").setup({}) }
+return {
+	{
+		"github/copilot.vim",
+		commit = "a9228e01",
+		event = "InsertEnter",
+	},
+}
