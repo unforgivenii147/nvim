@@ -21,8 +21,13 @@ return {
     opts = {
       no_italic = true,
       term_colors = true,
+      transparent = true,
       transparent_background = true,
       styles = {
+
+        sidebars = "transparent",
+        floats = "transparent",
+
         comments = {},
         conditionals = {},
         loops = {},

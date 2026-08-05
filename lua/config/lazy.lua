@@ -18,7 +18,7 @@ require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
-    -- LSP config goes here
+
     { "neovim/nvim-lspconfig", opts = { servers = { pyright = {} } } },
   },
   defaults = {
@@ -33,9 +33,7 @@ require("lazy").setup({
     enabled = false,
     notify = false,
   },
-  --  change-detection = {
-  --    enabled = false,
-  --  },
+
   git = {
     depth = 1,
     filter = "blob:none",

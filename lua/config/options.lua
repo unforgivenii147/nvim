@@ -1,9 +1,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
---vim.cmd.colorscheme("tokyonight")
+vim.g.lazydev_enabled = true
+vim.opt.syntax = "on"
 
--- vim.opt.syntax = "on"
+vim.opt.spell = true
+vim.opt.spelllang = "en"
+
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.guicursor =
@@ -28,7 +31,6 @@ vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.wrap = false
 
--- Enable file position restoration
 vim.opt.viminfo = "'1000,<50,s10,h"
 
 vim.opt.guicursor = {
@@ -37,19 +39,34 @@ vim.opt.guicursor = {
   "sm:block-blinkwait500-blinkoff400-blinkon250",
 }
 
---vim.api.nvim_create_autocmd("VimLeavePre", {
---  callback = function()
--- \x1b[5 q = underline (normal in Termux)
--- \x1b[3 q = vertical bar
--- \x1b[0 q = default (usually block)
---    vim.fn.system("printf '\x1b[5 q'")
---  end,
---(})
-
 vim.diagnostic.config({
-  virtual_text = true, -- Show inline error messages
-  signs = true, -- Show gutter markers
-  underline = true, -- Underline problematic code
-  update_in_insert = false, -- Update diagnostics while typing
-  severity_sort = true, -- Sort by severity
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "<filetype>" },
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
+
+-- Enable spell checking for certain filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text", "python", "json" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_us"
+  end,
+})
+
+-- Customize highlight colors
+vim.cmd([[
+  highlight SpellBad gui=undercurl guisp=#ff0000
+  highlight SpellCap gui=undercurl guisp=#00ffff
+  highlight SpellLocal gui=undercurl guisp=#00ff00
+  highlight SpellRare gui=undercurl guisp=#ff00ff
+]])
