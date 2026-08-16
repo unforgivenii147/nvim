@@ -27,3 +27,6 @@ vim.g.maplocalleader = " "
 
 -- Minimal provider tweaks (like AstroNvim)
 vim.g.python3_host_prog = vim.fn.getenv("PYENV_ROOT") and (vim.fn.getenv("PYENV_ROOT") .. "/shims/python") or nil
+
+vim.opt.termguicolors = true
+require("bufferline").setup({})
