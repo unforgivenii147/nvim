@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/plugins/mason.lua
 return {
   {
     "mason-org/mason.nvim",
@@ -17,7 +16,7 @@ return {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    dependencies = { "mason-org/mason.nvim", "jose-elias-alvarez/null-ls.nvim" },
+    dependencies = { "mason-org/mason.nvim", "folke/null-ls.nvim" },
     config = function()
       require("mason-null-ls").setup({
         ensure_installed = { "ruff" },

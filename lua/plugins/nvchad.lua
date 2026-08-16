@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/plugins/style_nvchad.lua
 -- Small NvChad-inspired UX additions
 return {
   {

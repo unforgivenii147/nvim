@@ -1,4 +1,7 @@
 -- ~/.config/nvim/lua/core/options.lua
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local o = vim.opt
 
 -- Basic sensible options (inspired by Astro/NvChad/LazyVim)
@@ -19,14 +22,5 @@ o.splitbelow = true
 o.wrap = false
 o.foldmethod = "expr"
 o.foldexpr = "nvim_treesitter#foldexpr()"
+o.termguicolors = true
 o.completeopt = { "menu", "menuone", "noselect" }
-
--- Leader
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
--- Minimal provider tweaks (like AstroNvim)
-vim.g.python3_host_prog = vim.fn.getenv("PYENV_ROOT") and (vim.fn.getenv("PYENV_ROOT") .. "/shims/python") or nil
-
-vim.opt.termguicolors = true
-require("bufferline").setup({})
