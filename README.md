@@ -11,7 +11,6 @@ exec ~/.config/nvim/installer/linux-mac.sh
 sudo apt update; sudo apt install neovim
 ```
 **_Requires Neovim 0.12+ and [`tree-sitter-cli`](https://github.com/tree-sitter/tree-sitter/tree/master/crates/cli) ≥ 0.26.1 (install via your OS package manager, e.g. `brew install tree-sitter-cli` — not npm). After installation, open Neovim and run `:Lazy sync`, then reopen Neovim. Upgrade Neovim with your OS package manager if needed — CodeArt will refuse to load on older versions._**
-
 #### 🌲💺Σ🖥️ Install lsp and treesitter:
 - You can install lsp for a language with `:LspInstall <language>`
 - Install treesitter parsers with `:TSInstall <language>`, or set `config.treesitter.ensure_installed` in `user_settings.lua`. Update with `:TSUpdate`.
@@ -19,7 +18,6 @@ sudo apt update; sudo apt install neovim
 - Run `:MasonUpdate` and `:TSUpdate` if needed
 - Restart NeoVim
 If CodeArt reports that your Neovim is too old after an update, upgrade Neovim first, then reopen the editor.
-
 ## :sparkles: Features:
 - 😴 Lazy load plugins!. With lazy loading NeoVim starts up very fast. It took me around 20 miliseconds on a virtual machine with 4GB ram and 2 Cores
   ![LazyLoad](/utils/media/LazyLoad.png "LazyLoad")

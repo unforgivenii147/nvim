@@ -12,18 +12,19 @@ map("n", "<A-l>", "<C-w><C-l>")
 map("n", "<A-h>", "<C-w><C-h>")
 -- Buffer resizing.
 if is_plugin_installed("vim-resize") and not disabled_plugins.vim_resize then
-	map("n", "<S-h>", ":call ResizeLeft(3)<CR><Esc>")
-	map("n", "<S-l>", ":call ResizeRight(3)<CR><Esc>")
-	map("n", "<S-k>", ":call ResizeUp(1)<CR><Esc>")
-	map("n", "<S-j>", ":call ResizeDown(1)<CR><Esc>")
+  map("n", "<S-h>", ":call ResizeLeft(3)<CR><Esc>")
+  map("n", "<S-l>", ":call ResizeRight(3)<CR><Esc>")
+  map("n", "<S-k>", ":call ResizeUp(1)<CR><Esc>")
+  map("n", "<S-j>", ":call ResizeDown(1)<CR><Esc>")
 end
 -- Buffer switching.
 if is_plugin_installed("bufferline.nvim") and not disabled_plugins.nvim_bufferline then
-	map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
-	map("n", "<Tab>", ":BufferLineCycleNext<CR>")
+  map("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
+  map("n", "<Tab>", ":BufferLineCycleNext<CR>")
 end
 -- Moving lines in visual select mode.
-map("v", "K", ":move '<-2<CR>gv-gv")map("v", "J", ":move '>+1<CR>gv-gv")
+map("v", "K", ":move '<-2<CR>gv-gv")
+map("v", "J", ":move '>+1<CR>gv-gv")
 -- Terminal mapping for resizing and moving between splits.
 map("t", "<esc>", "<C-\\><C-n>")
 map("t", "<A-h>", "<c-\\><c-n><c-w>h")
@@ -36,7 +37,7 @@ map("t", "<S-k>", "<c-\\><C-n>:call ResizeUp(1)<CR>")
 map("t", "<S-l>", "<c-\\><C-n>:call ResizeRight(3)<CR>")
 -- ToggleTerm.
 if is_plugin_installed("toggleterm.nvim") and not disabled_plugins.toggleterm then
-	map("n", "<C-t>", ":ToggleTerm<CR>")
+  map("n", "<C-t>", ":ToggleTerm<CR>")
 end
 -- Don't copy the replaced text after pasting.
 map("v", "p", '"_dP')

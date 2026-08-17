@@ -26,13 +26,13 @@ opt.termguicolors = true
 opt.clipboard = "unnamedplus"
 -- Warn when no system clipboard provider is available (Linux).
 if require("utils").os == "Linux" then
-	require("utils").warn_missing_executable(
-		{ "xclip", "xsel", "wl-copy" },
-		"Clipboard: no provider found (`xclip`, `xsel`, or `wl-copy`).\n"
-			.. "Install one for your display server so unnamedplus yank/paste works "
-			.. "(X11: xclip/xsel, Wayland: wl-clipboard).",
-		"clipboard"
-	)
+  require("utils").warn_missing_executable(
+    { "xclip", "xsel", "wl-copy" },
+    "Clipboard: no provider found (`xclip`, `xsel`, or `wl-copy`).\n"
+      .. "Install one for your display server so unnamedplus yank/paste works "
+      .. "(X11: xclip/xsel, Wayland: wl-clipboard).",
+    "clipboard"
+  )
 end
 -- Enable mouse in all modes.
 opt.mouse = "a"
@@ -75,11 +75,11 @@ opt.foldlevel = 99
 vim.loader.enable()
 -- Set line number for help files.
 autocmd("FileType", {
-	pattern = "help",
-	callback = function()
-		opt.number = true
-		opt.relativenumber = false
-	end,
+  pattern = "help",
+  callback = function()
+    opt.number = true
+    opt.relativenumber = false
+  end,
 })
 -- Set or unset line number, relativenumber and cursorline in different buffers.
 -- If buffer is terminal start in insertmode.
@@ -102,91 +102,91 @@ autocmd("FileType", {
 -- Auto open nvim-tree when writing (nvim .) in command line
 -- and auto open Alpha when nothing given as argument.
 if vim.fn.index(vim.fn.argv(), ".") >= 0 then
-	autocmd("VimEnter", {
-		pattern = "*",
-		callback = function()
-			if is_plugin_installed("neo-tree.nvim") and not disable_plugins.neo_tree then
-				vim.cmd("Neotree reveal")
-			end
-		end,
-	})
-	vim.api.nvim_buf_delete(0, {})
+  autocmd("VimEnter", {
+    pattern = "*",
+    callback = function()
+      if is_plugin_installed("neo-tree.nvim") and not disable_plugins.neo_tree then
+        vim.cmd("Neotree reveal")
+      end
+    end,
+  })
+  vim.api.nvim_buf_delete(0, {})
 elseif vim.fn.len(vim.fn.argv()) == 0 then
-	autocmd("VimEnter", {
-		pattern = "*",
-		callback = function()
-			if is_plugin_installed("dashboard-nvim") and not disable_plugins.dashboard then
-				vim.cmd("Dashboard")
-			end
-		end,
-	})
+  autocmd("VimEnter", {
+    pattern = "*",
+    callback = function()
+      if is_plugin_installed("dashboard-nvim") and not disable_plugins.dashboard then
+        vim.cmd("Dashboard")
+      end
+    end,
+  })
 end
 -- Defining CodeArtUpdate commands.
 vim.api.nvim_create_user_command("CodeArtUpdate", function()
-	require("utils").update()
+  require("utils").update()
 end, { nargs = 0 })
 -- NOTE: Set your shell to powershell because of :CodeArtUpdate command and
 -- other problems with cmd in Windows.
 if require("utils").os == "Windows_NT" then
-	vim.opt.shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
-	vim.opt.shellcmdflag =
-		"-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
-	vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
-	vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
-	vim.opt.shellquote = ""
-	vim.opt.shellxquote = ""
+  vim.opt.shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+  vim.opt.shellcmdflag =
+    "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+  vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+  vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
 end
 -- Creating CodeArtTransparent command.
 vim.api.nvim_create_user_command("CodeArtTransparent", function()
-	require("theme").make_codeart_transparent()
+  require("theme").make_codeart_transparent()
 end, { nargs = 0 })
 -- TODO: check if it's better to move these in another file.
 -- TODO: Complete this list.
 local statusline_hide = {
-	"alpha",
-	"TelescopePrompt",
-	"TelescopeResults",
-	"lazy",
-	"lspinfo",
-	"mason",
-	"neo-tree",
+  "alpha",
+  "TelescopePrompt",
+  "TelescopeResults",
+  "lazy",
+  "lspinfo",
+  "mason",
+  "neo-tree",
 }
 local cursorline_hide = {
-	"alpha",
-	"dashboard",
-	"TelescopePrompt",
-	"TelescopeResults",
-	"lazy",
-	"lspinfo",
-	"mason",
-	"neo-tree",
+  "alpha",
+  "dashboard",
+  "TelescopePrompt",
+  "TelescopeResults",
+  "lazy",
+  "lspinfo",
+  "mason",
+  "neo-tree",
 }
 local function toggle_statusline(types)
-	for _, type in pairs(types) do
-		if vim.o.filetype == type then
-			opt.laststatus = 0
-			opt.ruler = false
-			break
-		else
-			opt.laststatus = 3
-			opt.ruler = true
-		end
-	end
+  for _, type in pairs(types) do
+    if vim.o.filetype == type then
+      opt.laststatus = 0
+      opt.ruler = false
+      break
+    else
+      opt.laststatus = 3
+      opt.ruler = true
+    end
+  end
 end
 local function toggle_cursorline(types)
-	for _, type in pairs(types) do
-		if vim.o.filetype == type then
-			opt.cursorline = false
-			break
-		else
-			opt.cursorline = true
-		end
-	end
+  for _, type in pairs(types) do
+    if vim.o.filetype == type then
+      opt.cursorline = false
+      break
+    else
+      opt.cursorline = true
+    end
+  end
 end
 autocmd({ "FileType", "BufEnter" }, {
-	callback = function()
-		toggle_statusline(statusline_hide)
-		toggle_cursorline(cursorline_hide)
-	end,
+  callback = function()
+    toggle_statusline(statusline_hide)
+    toggle_cursorline(cursorline_hide)
+  end,
 })
 opt.wrap = false
