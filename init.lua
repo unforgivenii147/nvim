@@ -1,7 +1,10 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
-
-local log_file = vim.fn.stdpath("log") .. "/session.log"
-vim.cmd(string.format("redir! >> %s", log_file))
-vim.cmd("checkhealth")
-vim.cmd("redir END")
+local utils = require("utils")
+if not utils.has_minimum_version() then
+  utils.notify_neovim_too_old()
+  return
+end
+require("settings")
+require("maps")
+require("plugins")
+require("theme")
+require("user_settings").config.other_configs()

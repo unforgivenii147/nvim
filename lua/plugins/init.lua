@@ -1,7 +1,0 @@
-require("colorschemes")
-require("completion")
-require("dap")
-require("lsp")
-require("mason")
-require("treesitter")
-require("ui")
