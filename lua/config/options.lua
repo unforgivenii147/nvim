@@ -1,68 +1,74 @@
+local o = vim.opt
+
+-- Leader keys
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.lazydev_enabled = true
 
-vim.opt.autoindent = true
-vim.opt.autoread = true
-vim.opt.backup = false
-vim.opt.breakindent = true
-vim.opt.cmdheight = 2
-vim.opt.completeopt:append("noselect")
-vim.opt.confirm = true
-vim.opt.cursorline = true
-vim.opt.encoding = "UTF-8"
-vim.opt.errorbells = false
-vim.opt.expandtab = true
-vim.opt.exrc = true
-vim.opt.fileencoding = "UTF-8"
-vim.opt.guicursor = {
+-- Basic options
+o.autoindent = true
+o.autoread = true
+o.backup = false
+o.breakindent = true
+o.clipboard = "unnamedplus"
+o.cmdheight = 2
+o.completeopt:append("noselect")
+o.confirm = true
+o.cursorline = true
+o.encoding = "UTF-8"
+o.errorbells = false
+o.expandtab = true
+o.exrc = true
+o.fileencoding = "UTF-8"
+o.guicursor = {
 	"n-v-c:block,i:ver25,ve:ver35,o:hor50",
 	"a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
 	"sm:block-blinkwait500-blinkoff400-blinkon250",
 }
-vim.opt.hidden = true
-vim.opt.hlsearch = true
-vim.opt.inccommand = "nosplit"
-vim.opt.incsearch = true
-vim.opt.joinspaces = false
-vim.opt.jumpoptions = { "view" }
-vim.opt.laststatus = 3
-vim.opt.linebreak = true
-vim.opt.magic = true
-vim.opt.mouse = "a"
-vim.opt.mousescroll = "ver:1,hor:6"
-vim.opt.number = true
-vim.opt.numberwidth = 2
-vim.opt.path:append("**")
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 4
-vim.opt.secure = true
-vim.opt.shiftwidth = 4
-vim.opt.showbreak = "+++ "
-vim.opt.showcmd = false
-vim.opt.showcmdloc = "last"
-vim.opt.showmatch = true
-vim.opt.showmode = false
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-vim.opt.smoothscroll = true
-vim.opt.softtabstop = 4
-vim.opt.spelllang = "en_us"
-vim.opt.splitbelow = true
-vim.opt.syntax = "on"
-vim.opt.tabstop = 4
-vim.opt.termguicolors = true
-vim.opt.timeoutlen = 300
-vim.opt.undofile = true
-vim.opt.updatetime = 250
-vim.opt.viminfo = "'1000,<50,s10,h"
-vim.opt.wrap = false
+o.hidden = true
+o.hlsearch = true
+o.inccommand = "nosplit"
+o.incsearch = true
+o.joinspaces = false
+o.jumpoptions = { "view" }
+o.laststatus = 3
+o.linebreak = true
+o.listchars = { tab = "⭢ ", trail = "·", extends = "→", precedes = "←" }
+o.magic = true
+o.mouse = "a"
+o.mousescroll = "ver:1,hor:6"
+o.number = true
+o.numberwidth = 2
+o.path:append("**")
+o.relativenumber = true
+o.scrolloff = 4
+o.secure = true
+o.shiftwidth = 4
+o.showbreak = "+++ "
+o.showcmd = false
+o.showcmdloc = "last"
+o.showmatch = true
+o.showmode = false
+o.smartcase = true
+o.smartindent = true
+o.smarttab = true
+o.smoothscroll = true
+o.softtabstop = 4
+o.spell = false
+o.spelllang = "en_us"
+o.splitbelow = true
+o.syntax = "on"
+o.tabstop = 4
+o.termguicolors = true
+o.timeoutlen = 300
+o.undodir = vim.fn.stdpath("config") .. "/undo"
+o.undofile = true
+o.updatetime = 250
+o.viminfo = "'1000,<50,s10,h"
+o.wrap = false
+o.signcolumn = "yes"  -- Changed from "auto" to "yes" per the first block
 
-vim.opt.signcolumn = "auto" 
-vim.opt.smartcase = true 
-vim.opt.listchars = { tab = "⭢ ", trail = "·", extends = "→", precedes = "←" } 
-vim.opt.spell = false 
-
+-- Diagnostics
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
@@ -71,6 +77,7 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+-- Highlight groups
 vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
 vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
 vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
@@ -86,6 +93,7 @@ vim.cmd([[
   highlight SpellRare gui=undercurl guisp=#ff00ff
 ]])
 
+-- Autocmds
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "text", "python", "json" },
 	callback = function()
@@ -100,4 +108,3 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 		vim.fn.system("printf '\x1b[2 q'")
 	end,
 })
-
