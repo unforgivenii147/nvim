@@ -5,7 +5,7 @@ return {
   -- Mason: Package manager for LSP servers, DAP servers, linters, formatters
   -- ============================================================================
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     cmd = "Mason",
     build = ":MasonUpdate",
     opts = {
@@ -48,9 +48,9 @@ return {
   -- mason-lspconfig: Bridge between Mason and nvim-lspconfig
   -- ============================================================================
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = { "mason-org/mason.nvim" },
     opts = {
       ensure_installed = { "pyright", "ruff_lsp", "ruff" },
       automatic_installation = true,
@@ -63,8 +63,8 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp", -- for capabilities
     },
     config = function()
