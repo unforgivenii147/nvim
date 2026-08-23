@@ -1,0 +1,16 @@
+return {
+  require("plugins.completion"),
+  require("plugins.disable_lua_ls"),
+  require("plugins.indent-blankline"),
+  require("plugins.lastplace"),
+  require("plugins.lsp-dap"),
+  require("plugins.lualine"),
+  require("plugins.mason"),
+  require("plugins.matchup"),
+  require("plugins.mocha"),
+  require("plugins.neotree"),
+  require("plugins.null-ls"),
+  require("plugins.telescope"),
+  require("plugins.tokyo"),
+  require("plugins.treesitter"),
+}

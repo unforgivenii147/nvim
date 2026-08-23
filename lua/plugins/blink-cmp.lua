@@ -1,25 +1,23 @@
--- lua/plugins/blink-cmp.lua
--- using blink.cmp (hypothetical plugin name) with LuaSnip + friendly-snippets
--- Replace "blink/cmp.nvim" with the actual plugin repo if different.
 return {
   "blink/cmp.nvim",
   event = "InsertEnter",
   dependencies = {
-     "blink/blink-compat",
+    "blink/blink-compat",
     "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
-    "hrsh7th/cmp-nvim-lsp", -- keep LSP source
-    "hrsh7th/cmp-buffer",   -- keep buffer source
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
   },
   config = function()
     local cmp_ok, cmp = pcall(require, "cmp")
-    if not cmp_ok then return end
+    if not cmp_ok then
+      return
+    end
     local luasnip_ok, luasnip = pcall(require, "luasnip")
-    if not luasnip_ok then return end
-
-    -- load friendly-snippets
+    if not luasnip_ok then
+      return
+    end
     require("luasnip.loaders.from_vscode").lazy_load()
-
     cmp.setup({
       snippet = {
         expand = function(args)

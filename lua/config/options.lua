@@ -1,8 +1,5 @@
 local o = vim.opt
 
--- Leader keys
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 vim.g.lazydev_enabled = true
 
 -- Basic options
@@ -21,9 +18,9 @@ o.expandtab = true
 o.exrc = true
 o.fileencoding = "UTF-8"
 o.guicursor = {
-	"n-v-c:block,i:ver25,ve:ver35,o:hor50",
-	"a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-	"sm:block-blinkwait500-blinkoff400-blinkon250",
+  "n-v-c:block,i:ver25,ve:ver35,o:hor50",
+  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+  "sm:block-blinkwait500-blinkoff400-blinkon250",
 }
 o.hidden = true
 o.hlsearch = true
@@ -66,15 +63,15 @@ o.undofile = true
 o.updatetime = 250
 o.viminfo = "'1000,<50,s10,h"
 o.wrap = false
-o.signcolumn = "yes"  -- Changed from "auto" to "yes" per the first block
+o.signcolumn = "yes" -- Changed from "auto" to "yes" per the first block
 
 -- Diagnostics
 vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = true,
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
 })
 
 -- Highlight groups
@@ -95,16 +92,16 @@ vim.cmd([[
 
 -- Autocmds
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "text", "python", "json" },
-	callback = function()
-		vim.opt_local.spell = true
-		vim.opt_local.spelllang = "en_us"
-		vim.treesitter.start()
-	end,
+  pattern = { "markdown", "text", "python", "json" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_us"
+    vim.treesitter.start()
+  end,
 })
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
-	callback = function()
-		vim.fn.system("printf '\x1b[2 q'")
-	end,
+  callback = function()
+    vim.fn.system("printf '\x1b[2 q'")
+  end,
 })
