@@ -1,0 +1,13 @@
+return {
+  {
+    "folke/lazy.nvim",
+    opts = {
+      install = {
+        clone = "git clone --depth 1 {{url}} {{path}}"
+      },
+      sync = {
+        run = "git gc --prune=now"
+      }
+    }
+  }
+}

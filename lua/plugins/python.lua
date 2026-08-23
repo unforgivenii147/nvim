@@ -1,6 +1,5 @@
 local lsp = "pyright" -- "pyright" or "basedpyright"
 local ruff = "ruff" -- "ruff" or "ruff_lsp"
-
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
