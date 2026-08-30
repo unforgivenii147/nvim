@@ -1,4 +1,5 @@
 .github/
+*$py.class
 *.bak
 *.env
 *.log
@@ -6,12 +7,16 @@
 *.pyc
 *.tmp
 .env
+.venv/
+__pycache__/
+credential.json
 out/
 output/
+simz.json
 .bash_secrets
 .github_token
 .git_token
 *_token
 *_api_key
 undo/
-undo/
+

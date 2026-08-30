@@ -63,7 +63,7 @@ require("lazy").setup({
         git = git_config,
         performance = performance_config,
         checker = {
-          enabled = true,
+          enabled = false,
           notify = false,
         },
       },
@@ -72,10 +72,6 @@ require("lazy").setup({
 
   defaults = { lazy = true, version = false },
   install = install_config,
-  checker = {
-    enabled = true,
-    notify = false,
-  },
   performance = performance_config,
   git = git_config,
 })

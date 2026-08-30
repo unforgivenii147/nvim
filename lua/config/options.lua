@@ -63,12 +63,12 @@ o.undofile = true
 o.updatetime = 250
 o.viminfo = "'1000,<50,s10,h"
 o.wrap = false
-o.signcolumn = "yes" -- Changed from "auto" to "yes" per the first block
+o.signcolumn = "no"
 
 -- Diagnostics
 vim.diagnostic.config({
   virtual_text = true,
-  signs = true,
+  --	signs = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
