@@ -1,7 +1,28 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  opts = function()
-    return {}
-  end,
+  opts = {
+    options = {
+      theme = "catppuccin",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
+    },
+    sections = {
+      lualine_c = {
+        { "filename", path = 1 },
+      },
+      lualine_x = {
+        "encoding",
+        {
+          "fileformat",
+          symbols = {
+            unix = "LF",
+            dos = "CRLF",
+            mac = "CR",
+          },
+        },
+        "filetype",
+      },
+    },
+  },
 }

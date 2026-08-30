@@ -9,7 +9,6 @@ return {
         ensure_installed = {
           "lua",
           "python",
-          "json",
         },
         highlight = { enable = true },
         indent = { enable = true },
