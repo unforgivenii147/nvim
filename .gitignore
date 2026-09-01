@@ -19,4 +19,5 @@ simz.json
 *_token
 *_api_key
 undo/
-
+spell/*.json
+undo/
