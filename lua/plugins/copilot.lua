@@ -1,3 +1,4 @@
 return {
-  "github/copilot.vim",
+  "copilot.vim",
+  dir = "~/projects/lua/copilot.vim",
 }

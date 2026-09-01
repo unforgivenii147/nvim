@@ -45,6 +45,12 @@ return {
     name = "heirline.nvim",
     lazy = true,
   },
+  {
+    dir = "~/projects/lua/glance.nvim",
+    name = "glance",
+    lazy = true,
+    cmd = "Glance",
+  },
   --	{
   --		dir = "~/projects/lua/",
   --		name = "",

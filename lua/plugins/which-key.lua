@@ -5,11 +5,11 @@ return {
     plugins = { spelling = true },
     defaults = {
       mode = { "n", "v" },
-      ["<leader>"] = { name = "+leader" },
-      ["g"] = { name = "+goto" },
-      ["gs"] = { name = "+surround" },
-      ["]"] = { name = "+next" },
-      ["["] = { name = "+prev" },
+      { "<leader>", group = "leader" },
+      { "[", group = "prev" },
+      { "]", group = "next" },
+      { "g", group = "goto" },
+      { "gs", group = "surround" },
     },
   },
   config = function(_, opts)

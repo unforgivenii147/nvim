@@ -1,19 +1,17 @@
 return {
   {
-    -- select from:
     -- edge
-    -- glance
-    -- nightfox
-    -- vscode
+    -- nightfox.nvim
+    -- vscode.nvim
     -- everforest
     -- github-nvim-theme
     -- sonokai
-    dir = "~/projects/lua/glance",
-    name = "glance",
+    dir = "~/projects/lua/vscode.nvim",
+    name = "vscode",
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("glance")
+      vim.cmd.colorscheme("vscode")
     end,
   },
 }

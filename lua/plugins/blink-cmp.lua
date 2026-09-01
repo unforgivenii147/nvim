@@ -3,15 +3,15 @@ return {
     "saghen/blink.cmp",
     version = "*",
     dependencies = {
-      "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets",
+      { "LuaSnip", dir = "~/projects/lua/LuaSnip" },
+      { "friendly-snippets", dir = "~/projects/lua/friendly-snippets" },
     },
     opts = function(_, opts)
       opts.appearance = opts.appearance or {}
       opts.appearance.kind_icons = vim.tbl_extend("force", opts.appearance.kind_icons or {}, LazyVim.config.icons.kinds)
 
       opts.keymap = vim.tbl_deep_extend("force", opts.keymap or {}, {
-        preset = "default",
+        preset = "enter",
 
         ["<Tab>"] = {
           function(cmp)

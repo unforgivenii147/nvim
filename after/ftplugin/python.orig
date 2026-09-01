@@ -1,2 +1,0 @@
-require("nvim.lsp.manager").setup("ruff")
-require("nvim.lsp.manager").setup("pyright")
