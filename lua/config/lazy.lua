@@ -19,6 +19,7 @@ local disabled_plugins = {
   "gzip",
   "matchit",
   "matchparen",
+  "netrw",
   "netrwPlugin",
   "tarPlugin",
   "tohtml",
@@ -26,7 +27,6 @@ local disabled_plugins = {
   "zipPlugin",
 }
 
--- Extracted: Git configuration
 local git_config = {
   depth = 1,
   filter = "blob:none",
@@ -34,9 +34,8 @@ local git_config = {
   timeout = 60,
 }
 
--- Extracted: Install configuration
 local install_config = {
-  colorscheme = { "catppuccin" },
+  colorscheme = { "catppuccin", "tokyonight" },
   clone = "git clone --depth 1 --filter=blob:none {{url}} {{path}} 2>/dev/null || git clone --depth 1 {{url}} {{path}} 2>/dev/null || git clone {{url}} {{path}}",
   checkout = "git checkout {{commit}} 2>/dev/null || git checkout {{branch}} 2>/dev/null",
 }
