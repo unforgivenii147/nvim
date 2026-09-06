@@ -13,10 +13,10 @@ which_key.setup({
     ["<c>"] = "CTR",
   },
   window = {
-    border = "single", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    border = "single",
+    position = "bottom",
+    margin = { 1, 0, 1, 0 },
+    padding = { 2, 2, 2, 2 },
     winblend = 0,
   },
   ignore_missing = false,

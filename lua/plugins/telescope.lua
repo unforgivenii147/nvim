@@ -28,7 +28,6 @@ return {
   config = function(_, opts)
     local telescope = require("telescope")
     telescope.setup(opts)
-    -- Load the fzf extension after setup
     telescope.load_extension("fzf")
   end,
 }

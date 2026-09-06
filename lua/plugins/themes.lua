@@ -1,11 +1,10 @@
 return {
-  -- Catppuccin Theme
   {
     "catppuccin",
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      flavour = "mocha",
       background = {
         light = "latte",
         dark = "mocha",
@@ -105,13 +104,12 @@ return {
     },
   },
 
-  -- Tokyo Night Theme
   {
     "tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      style = "night", -- night, storm, day, moon
+      style = "night",
       light_style = "day",
       transparent = false,
       terminal_colors = true,
@@ -133,7 +131,6 @@ return {
     },
   },
 
-  -- Theme switching commands
   {
     "folke/which-key.nvim",
     optional = true,
@@ -144,7 +141,6 @@ return {
     },
   },
 
-  -- Theme selector using snacks
   {
     "snacks.nvim",
     opts = {

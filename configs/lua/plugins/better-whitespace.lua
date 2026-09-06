@@ -12,7 +12,6 @@ function _G.whitespace_visibility(file_types)
       better_whitespace_status = 0
     end
   end
-  -- vim.cmd("DisableWhitespace")
   if better_whitespace_status == 0 then
     vim.cmd('execute "DisableWhitespace"')
   else
@@ -20,8 +19,6 @@ function _G.whitespace_visibility(file_types)
   end
 end
 vim.cmd("autocmd BufEnter * lua whitespace_visibility(whitespace_disabled_file_types)")
---[[ BUG: I don't know why but it seems we must again specifcly run function for FileType dashboard.
-we must have it in both whitespace_disabled_file_types and here.]]
 vim.cmd(
   'autocmd FileType dashboard execute "DisableWhitespace" | autocmd BufLeave <buffer> lua whitespace_visibility(whitespace_disabled_file_types)'
 )

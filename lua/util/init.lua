@@ -1,8 +1,5 @@
 local M = {}
 
--- Insert values into a list if they don't already exist
----@param tbl string[]
----@param vals string|string[]
 function M.list_insert_unique(tbl, vals)
   if type(vals) ~= "table" then
     vals = { vals }

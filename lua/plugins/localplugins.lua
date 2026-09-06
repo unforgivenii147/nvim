@@ -24,10 +24,4 @@ return {
     name = "smart-splits.nvim",
     lazy = true,
   },
-
-  --	{
-  --		dir = "~/projects/lua/",
-  --		name = "",
-  --		lazy = true,
-  --	},
 }

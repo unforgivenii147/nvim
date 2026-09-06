@@ -1,5 +1,4 @@
 return {
-  -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -20,7 +19,6 @@ return {
         },
 
         ruff = {
-          -- Linting only (no formatting to avoid conflict with conform)
           init_options = {
             settings = {
               lineLength = 88,
@@ -34,7 +32,6 @@ return {
     },
   },
 
-  -- Formatting with conform
   {
     "stevearc/conform.nvim",
     optional = true,

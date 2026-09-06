@@ -1,104 +1,138 @@
 local o = vim.opt
+local g = vim.g
+local bo = vim.bo
 
--- Global settings
-vim.g.lazydev_enabled = true
-vim.g.maplocalleader = "\\"
+g.python3_host_prog = "/data/data/com.termux/files/home/.local/bin/python"
 
--- Python provider
-local python3 = vim.fn.exepath("python3")
-if python3 ~= "" then
-  vim.g.python3_host_prog = python3
-end
+g.lazydev_enabled = true
 
--- Basic options
-o.autoindent = true
-o.autoread = true
-o.backup = false
-o.breakindent = true
-o.clipboard = "unnamedplus"
-o.cmdheight = 2
-o.completeopt = { "menuone", "noselect" }
-o.confirm = true
-o.cursorline = true
-o.encoding = "UTF-8"
-o.errorbells = false
+g.matchparen_insert_timeout = 20
+g.matchparen_timeout = 20
+
 o.expandtab = true
 o.exrc = true
-o.fileencoding = "UTF-8"
-o.guicursor = {
-  "n-v-c:block,i:ver25,ve:ver35,o:hor50",
-  "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-  "sm:block-blinkwait500-blinkoff400-blinkon250",
-}
 o.hidden = true
-o.hlsearch = true
-o.ignorecase = true
-o.inccommand = "nosplit"
-o.incsearch = true
-o.joinspaces = false
-o.jumpoptions = { "view" }
-o.laststatus = 3
-o.linebreak = true
-o.listchars = {
-  tab = "⭢ ",
-  trail = "·",
-  extends = "→",
-  precedes = "←",
-}
+o.history = 500
 o.magic = true
-o.mouse = "a"
-o.mousescroll = "ver:1,hor:6"
+o.tildeop = true
+o.title = true
+
+o.shiftwidth = 4
+o.softtabstop = 4
+o.tabstop = 4
+bo.softtabstop = 4
+o.smarttab = true
+
 o.number = true
 o.numberwidth = 2
-o.path:append("**")
 o.relativenumber = true
-o.scrolloff = 8
-o.sidescrolloff = 8
-o.secure = true
-o.shiftwidth = 4
-o.showbreak = "+++ "
-o.showcmd = false
-o.showcmdloc = "last"
-o.showmatch = true
-o.showmode = false
-o.smartcase = true
-o.smartindent = true
-o.smarttab = true
+o.laststatus = 3
+o.mouse = "a"
+o.cmdheight = 2
+o.colorcolumn = "120"
+o.conceallevel = 3
 o.smoothscroll = true
-o.softtabstop = 4
-o.spell = false
-o.spelllang = "en_us"
+o.showbreak = "+++ "
 o.splitbelow = true
 o.splitright = true
-o.swapfile = false
-o.syntax = "on"
-o.tabstop = 4
-o.termguicolors = true
-o.timeoutlen = 300
---o.undofile = true
---o.undodir = vim.fn.stdpath("config") .. "/undo"
-o.updatetime = 50
-o.viminfo = "'1000,<50,s10,h"
-o.wrap = false
---o.signcolumn = "yes"
-o.colorcolumn = "120"
+o.background = "dark"
 
--- Diagnostics
+o.hlsearch = true
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
+
+o.encoding = "utf-8"
+o.fileencoding = "utf-8"
+o.scriptencoding = "utf-8"
+
+if vim.fn.executable("rg") == 1 then
+	o.grepprg = "rg --vimgrep --no-heading --smart-case"
+	o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+end
+
+o.viminfo = "'1000,<50,s10,h"
+
+o.guicursor = {
+	"i:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+	"sm:block-blinkwait175-blinkoff150-blinkon175",
+}
+
+o.listchars = {
+	tab = "⭢ ",
+	trail = "·",
+	extends = "→",
+	precedes = "←",
+}
+
+o.fillchars = {
+	eob = " ",
+	fold = " ",
+	foldopen = "",
+	foldsep = " ",
+	foldclose = "",
+	vert = "│",
+	diff = "╱",
+	msgsep = "‾",
+}
+
 vim.diagnostic.config({
-  virtual_text = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
+	float = { border = "rounded" },
+	virtual_text = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
 })
 
--- Highlight groups
-vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+local aug = vim.api.nvim_create_augroup("UserConfig", {})
+
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+	desc = "Highlight cursorline in active window",
+	pattern = "*",
+	command = "setlocal cursorline",
+	group = aug,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+	desc = "Clear cursorline when leaving window",
+	pattern = "*",
+	command = "if &bt != 'quickfix' | setlocal nocursorline | endif",
+	group = aug,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	desc = "Return to last edit position",
+	pattern = "*",
+	command = [[if line("'\"") > 0 && line("'\"") <= line("$") && expand('%:t') != 'COMMIT_EDITMSG' | exe "normal! g`\"" | endif]],
+	group = aug,
+})
+
+vim.api.nvim_create_autocmd("FocusGained", {
+	desc = "Check for file changes when focus gained",
+	pattern = "*",
+	command = "if getcmdwintype() == '' | checktime | endif",
+	group = aug,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	desc = "Check if file changed on disk",
+	pattern = "*",
+	command = "if &buftype == '' && !&modified && expand('%') != '' | exec 'checktime ' . expand('<abuf>') | endif",
+	group = aug,
+})
+
+vim.api.nvim_create_autocmd({ "CursorMovedI", "InsertLeave" }, {
+	desc = "Close popup menu automatically",
+	pattern = "*",
+	command = "if pumvisible() == 0 && !&pvw && getcmdwintype() == '' | pclose | endif",
+	group = aug,
+})
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+	callback = function()
+		vim.fn.system("printf '\\x1b[2 q'")
+	end,
+})
 
 vim.cmd([[
   highlight SpellBad gui=undercurl guisp=#ff0000
@@ -107,50 +141,47 @@ vim.cmd([[
   highlight SpellRare gui=undercurl guisp=#ff00ff
 ]])
 
--- Autocmds
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "text", "python", "json" },
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.spelllang = "en_us"
+vim.api.nvim_create_user_command("W", function(params)
+	local width = tonumber(params.fargs[1])
+	if not width then
+		return
+	end
+	if width < 0 or params.fargs[1]:sub(1, 1) == "+" then
+		width = vim.api.nvim_win_get_width(0) + width
+	end
+	if math.floor(width) ~= width then
+		width = math.floor(width * vim.o.columns)
+	end
+	vim.api.nvim_win_set_width(0, width)
+end, { nargs = 1 })
 
-    -- Start Tree-sitter only when a parser is available.
-    pcall(vim.treesitter.start)
-  end,
-})
+vim.api.nvim_create_user_command("H", function(params)
+	local height = tonumber(params.fargs[1])
+	if not height then
+		return
+	end
+	if height < 0 or params.fargs[1]:sub(1, 1) == "+" then
+		height = vim.api.nvim_win_get_height(0) + height
+	end
+	if math.floor(height) ~= height then
+		height = math.floor(height * vim.o.lines - vim.o.cmdheight)
+	end
+	vim.api.nvim_win_set_height(0, height)
+end, { nargs = 1 })
 
-vim.api.nvim_create_autocmd("VimLeavePre", {
-  callback = function()
-    vim.fn.system("printf '\\x1b[2 q'")
-  end,
-})
+vim.api.nvim_create_user_command("ToggleWrap", function()
+	vim.opt.wrap = not vim.opt.wrap:get()
+	print("Wrap: " .. tostring(vim.opt.wrap:get()))
+end, {})
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python", -- filetype for which to run the autocmd
-  callback = function()
-    -- use pep8 standards
-    vim.opt_local.expandtab = true
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-    vim.opt_local.softtabstop = 4
-
-    -- folds based on indentation https://neovim.io/doc/user/fold.html#fold-indent
-    -- if you are a heavy user of folds, consider using `nvim-ufo`
-    vim.opt_local.foldmethod = "indent"
-
-    local iabbrev = function(lhs, rhs)
-      vim.keymap.set("ia", lhs, rhs, { buffer = true })
-    end
-    -- automatically capitalize boolean values. Useful if you come from a
-    -- different language, and lowercase them out of habit.
-    iabbrev("true", "True")
-    iabbrev("false", "False")
-
-    -- we can also fix other habits we might have from other languages
-    iabbrev("--", "#")
-    iabbrev("null", "None")
-    iabbrev("none", "None")
-    iabbrev("nil", "None")
-    iabbrev("function", "def")
-  end,
-})
+function stevearc.foldtext()
+	local line = vim.api.nvim_buf_get_lines(0, vim.v.foldstart - 1, vim.v.foldstart, true)[1]
+	local idx = vim.v.foldstart + 1
+	while string.find(line, "^%s*@") or string.find(line, "^%s*$") do
+		line = vim.api.nvim_buf_get_lines(0, idx - 1, idx, true)[1]
+		idx = idx + 1
+	end
+	local icon = g.nerd_font and " " or "▼"
+	local padding = string.rep(" ", string.find(line, "[^%s]") - 1)
+	return string.format("%s%s %s   %d", padding, icon, line, vim.v.foldend - vim.v.foldstart + 1)
+end

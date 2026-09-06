@@ -1,5 +1,4 @@
 return {
-  -- Theme switcher keybindings
   {
     "catppuccin",
     keys = {
@@ -53,11 +52,10 @@ return {
     },
   },
 
-  -- Set default theme on startup
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin", -- Change this to your preferred default
+      colorscheme = "catppuccin",
     },
   },
 }
