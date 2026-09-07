@@ -69,22 +69,22 @@ return {
       },
       setup = {
         pyright = function()
-          require("lazyvim.util").lsp.on_attach(function(client, _)
+          require("snacks.util").lsp.on(function(client, _)
             if client.name == "pyright" then
               client.server_capabilities.hoverProvider = false
             end
           end)
         end,
         pylsp = function()
-          LazyVim.lsp.on_attach(function(client, _)
+          vim.lsp.on(function(client, _)
             if client.name == "pylsp" then
               client.server_capabilities.hoverProvider = false
             end
           end)
         end,
         ruff = function()
-          require("lazyvim.util").lsp.on_attach(function(client, _)
-            if client.name == "ruff_lsp" then
+          require("snacks.util").lsp.on(function(client, _)
+            if client.name == "ruff" then
               client.server_capabilities.hoverProvider = false
             end
           end)
