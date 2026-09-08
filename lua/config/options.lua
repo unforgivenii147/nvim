@@ -14,8 +14,6 @@ o.exrc = true
 o.hidden = true
 o.history = 500
 o.magic = true
-o.tildeop = true
-o.title = true
 
 o.shiftwidth = 4
 o.softtabstop = 4
@@ -44,7 +42,6 @@ o.smartcase = true
 
 o.encoding = "utf-8"
 o.fileencoding = "utf-8"
-o.scriptencoding = "utf-8"
 
 if vim.fn.executable("rg") == 1 then
   o.grepprg = "rg --vimgrep --no-heading --smart-case"
@@ -173,15 +170,3 @@ vim.api.nvim_create_user_command("ToggleWrap", function()
   vim.opt.wrap = not vim.opt.wrap:get()
   print("Wrap: " .. tostring(vim.opt.wrap:get()))
 end, {})
-
-function stevearc.foldtext()
-  local line = vim.api.nvim_buf_get_lines(0, vim.v.foldstart - 1, vim.v.foldstart, true)[1]
-  local idx = vim.v.foldstart + 1
-  while string.find(line, "^%s*@") or string.find(line, "^%s*$") do
-    line = vim.api.nvim_buf_get_lines(0, idx - 1, idx, true)[1]
-    idx = idx + 1
-  end
-  local icon = g.nerd_font and " " or "▼"
-  local padding = string.rep(" ", string.find(line, "[^%s]") - 1)
-  return string.format("%s%s %s   %d", padding, icon, line, vim.v.foldend - vim.v.foldstart + 1)
-end

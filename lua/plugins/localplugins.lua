@@ -5,11 +5,6 @@ return {
     lazy = true,
   },
   {
-    dir = "~/projects/lua/nlsp-settings.nvim",
-    name = "nlsp-settings.nvim",
-    lazy = true,
-  },
-  {
     dir = "~/projects/lua/outline.nvim",
     name = "outline.nvim",
     lazy = true,

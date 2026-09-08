@@ -121,12 +121,6 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", {
   desc = "Exit terminal mode",
 })
 
-map("n", "gd", vim.lsp.buf.definition, opts)
-map("n", "K", vim.lsp.buf.hover, opts)
-map("n", "<leader>rn", vim.lsp.buf.rename, opts)
-map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-map("n", "gr", vim.lsp.buf.references, opts)
-
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
